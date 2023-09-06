@@ -15,9 +15,13 @@ Project template for **[KiCad](https://www.kicad.org/)** [action plugins](https:
 - [How to use](#how-to-use)
   - [First build](#first-build)
   - [Hatch project manager](#hatch-project-manager)
+  - [Testing](#testing)
+  - [Github Actions](#github-actions)
 - [License](#license)
 
 ## Key Features
+
+[todo]
 
 ## How to use
 
@@ -63,7 +67,7 @@ This template is using [hatch](https://hatch.pypa.io/latest) with [hatch-kicad](
 Thanks to this build system it is possible to create KiCad compatible package file with single command.
 All settings used in this process are located in `pyproject.toml` file.
 
-At this stage you should start customizing template defaults. Open `pyproject.toml` and modify `kicad-package` section:
+At this stage you should start customizing project defaults. Open `pyproject.toml` and modify `kicad-package` section:
 
 ```toml
 [tool.hatch.build.targets.kicad-package]
@@ -73,6 +77,30 @@ name = "Template"
 
 These options controls plugin content and metadata. Metadata values will become important
 when publishing to KiCad's plugin repository. To learn more about `kicad-package` builder see [this](https://github.com/adamws/hatch-kicad#builder).
+
+Hatch is also used for running development tools in isolated environment.
+For example, to get linting results using `ruff`, `black` and `mypy`, run:
+
+```shell
+hatch run lint:all
+```
+
+To run code formatting run:
+
+```shell
+hatch run lint:fmt
+```
+
+## Testing
+
+Testing environment is not isolated (unlike `tool.hatch.envs.lint`) because it requires `pcbnew` package
+which is installed and managed by KiCad. [todo: more details]
+
+To execute tests run `pytest` command.
+
+## Github Actions
+
+[todo]
 
 ## License
 
