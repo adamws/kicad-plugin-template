@@ -14,6 +14,7 @@ Project template for **[KiCad](https://www.kicad.org/)** [action plugins](https:
 - [Key Features](#key-features)
 - [How to use](#how-to-use)
   - [First build](#first-build)
+  - [Hatch project manager](#hatch-project-manager)
 - [License](#license)
 
 ## Key Features
@@ -55,6 +56,23 @@ Build result is located in `dist/` directory. You can install it with KiCad's `P
 
 
 And that's it! Your plugin template is ready for development.
+
+### Hatch project manager
+
+This template is using [hatch](https://hatch.pypa.io/latest) with [hatch-kicad](https://github.com/adamws/hatch-kicad) plugin.
+Thanks to this build system it is possible to create KiCad compatible package file with single command.
+All settings used in this process are located in `pyproject.toml` file.
+
+At this stage you should start customizing template defaults. Open `pyproject.toml` and modify `kicad-package` section:
+
+```toml
+[tool.hatch.build.targets.kicad-package]
+name = "Template"
+# ...remaining options
+```
+
+These options controls plugin content and metadata. Metadata values will become important
+when publishing to KiCad's plugin repository. To learn more about `kicad-package` builder see [this](https://github.com/adamws/hatch-kicad#builder).
 
 ## License
 
