@@ -1,0 +1,1 @@
+# KiCad Plugin Template
