@@ -9,6 +9,7 @@ from .example_dialog import ExampleDialog
 class TemplatePluginAction(pcbnew.ActionPlugin):
     def defaults(self) -> None:
         self.name = "Template Plugin"
+        self.category = "Templates"
         self.description = "This is plugin template"
         self.show_toolbar_button = True
         self.icon_file_name = os.path.join(os.path.dirname(__file__), "icon.png")
