@@ -21,7 +21,11 @@ Project template for **[KiCad](https://www.kicad.org/)** [action plugins](https:
 
 ## Key Features
 
-[todo]
+- KiCad compatible plugin packaging with minimal configuration
+- Custom [repository](https://adamws.github.io/kicad-plugin-template/) deployments for development builds
+- Test setup example
+- Lint tools configuration with sane defaults
+- [Hatch](https://hatch.pypa.io/latest/) based for extra extensibility
 
 ## How to use
 
@@ -60,7 +64,7 @@ If everything is ok, clicking it will result in following window:
 ![icon-and-gui-window](resources/icon-and-gui-window.png)
 
 
-And that's it! Your plugin template is ready for development.
+And that's it! You built working KiCad plugin. Now it's time to start modifying template.
 
 ### Hatch project manager
 
@@ -79,29 +83,47 @@ name = "Template"
 These options controls plugin content and metadata. Metadata values will become important
 when publishing to KiCad's plugin repository. To learn more about `kicad-package` builder see [this](https://github.com/adamws/hatch-kicad#builder).
 
-Hatch is also used for running development tools in isolated environment.
+Hatch is also used for running various actions in isolated environments.
+There are two environments defined:
+
+```toml
+[tool.hatch.envs.default]
+# ...
+[tool.hatch.envs.lint]
+# ...
+```
+
+Project environment can be used with [hatch run](https://hatch.pypa.io/latest/cli/reference/#hatch-run)
+or [hatch shell](https://hatch.pypa.io/latest/cli/reference/#hatch-shell) command.
 For example, to get linting results using `ruff`, `black` and `mypy`, run:
 
 ```shell
 hatch run lint:all
 ```
 
-To run code formatting run:
-
-```shell
-hatch run lint:fmt
-```
-
 ## Testing
 
-Testing environment is not isolated (unlike `tool.hatch.envs.lint`) because it requires `pcbnew` package
-which is installed and managed by KiCad. [todo: more details]
+Tests are run in `default` environment. This environment uses
+[`system-packages = true`](https://hatch.pypa.io/latest/plugins/environment/virtual/#options) option
+because it requires `pcbnew` package which is installed and managed by KiCad.
 
-To execute tests run `pytest` command.
+To execute tests run `hath run test` command.
+
+> [!WARNING]
+> This approach wasn't tested on Windows
 
 ## Github Actions
 
-[todo]
+This template project uses [GitHub Actions](https://docs.github.com/en/actions) for CI/CD.
+For the details see [main](https://github.com/adamws/kicad-plugin-template/blob/master/.github/workflows/main.yml) workflow file.
+
+This workflow performs tests and publishes plugin package.
+When built on `master` branch, plugin is published to custom KiCad plugin repository
+which is build by [hatch-kicad](https://github.com/adamws/hatch-kicad) `kicad-repository` hook
+and then is pushed to [gh-pages](https://github.com/adamws/kicad-plugin-template/tree/gh-pages) branch.
+This makes it accessible via following URL: [`https://adamws.github.io/kicad-plugin-template/`](https://adamws.github.io/kicad-plugin-template/).
+
+For tags, plugin zip archive is published as [GitHub release](https://github.com/adamws/kicad-plugin-template/releases).
 
 ## License
 

@@ -37,6 +37,7 @@ description_full = [
   "This is plugin template. It has no bigger purpose.\n",
   "Visit project homepage to learn more.",
 ]
+# plugin identifier, remember to change!
 identifier = "com.github.adamws.kicad-plugin-template"
 author = { name = "anonymous", web="https://example.com" }
 status = "development"
@@ -47,6 +48,19 @@ include = [
   "plugin/icon.png",
 ]
 icon = "resources/icon.png"
+# hosted on GitHub pages, remember to change username and project name!
+download_url = "https://adamws.github.io/kicad-plugin-template/{zip_name}"
+
+[tool.hatch.build.targets.kicad-package.hooks.kicad-repository]
+# use defauls
+
+[tool.hatch.envs.default]
+system-packages = true # for `pcbnew` module
+dependencies = [
+  "pytest",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
 
 [tool.hatch.envs.lint]
 detached = true
