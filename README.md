@@ -54,9 +54,10 @@ Build result is located in `dist/` directory. You can install it with KiCad's `P
 
 ![install-from-file](resources/install-from-file.png)
 
-|                                                                                                                            |                                                                                                               |
-| ---                                                                                                                        | ---                                                                                                           |
-| To check if it is working, open `PCB Editor`. Plugin icon should be on the toolbar ![on-toolbar](resources/on-toolbar.png) | If everything is ok, clicking it will result in following window ![gui-window](resources/gui-window.png)      |
+To check if it is working, open `PCB Editor`. Plugin icon should be on the toolbar.
+If everything is ok, clicking it will result in following window:
+
+![icon-and-gui-window](resources/icon-and-gui-window.png)
 
 
 And that's it! Your plugin template is ready for development.
