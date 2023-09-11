@@ -1,0 +1,34 @@
+{
+    "packages": [
+        {
+            "$schema": "https://go.kicad.org/pcm/schemas/v1",
+            "name": "Template",
+            "description": "Template Plugin for KiCad",
+            "description_full": "This is plugin template. It has no bigger purpose.\nVisit project homepage to learn more.",
+            "identifier": "com.github.adamws.kicad-plugin-template",
+            "type": "plugin",
+            "author": {
+                "name": "anonymous",
+                "contact": {
+                    "web": "https://example.com"
+                }
+            },
+            "license": "MIT",
+            "resources": {
+                "Homepage": "https://github.com/adamws/kicad-plugin-template",
+                "Bug Tracker": "https://github.com/adamws/kicad-plugin-template/issues"
+            },
+            "versions": [
+                {
+                    "version": "0.1.0",
+                    "status": "development",
+                    "kicad_version": "6.0",
+                    "download_sha256": "7f344bc10d28a5bbe152e93599bed0cd1e7727809aadfe862dcab8be45362c44",
+                    "download_size": 10247,
+                    "install_size": 9295,
+                    "download_url": "https://adamws.github.io/kicad-plugin-template/kicad_plugin_template-0.1.0.zip"
+                }
+            ]
+        }
+    ]
+}
